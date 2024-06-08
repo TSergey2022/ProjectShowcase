@@ -8,11 +8,11 @@ export function fetchFavorite() {
       return res.json();
     })
     .then((data: number[]) => {
-      return Promise.all(data.map((projectId: number) => fetchProject(projectId).then((res: any) => res.json())));
+      return Promise.all(data.map((projectId: number) => fetchProject(projectId)));
     })
     .catch(() => {
       return data.star.map((projectId: number) => data.projects.find(card=>card.id===projectId));
-  });
+    });
 }
 
 export function fetchLastYear() {
@@ -21,7 +21,7 @@ export function fetchLastYear() {
       return res.json();
     })
     .then((data: number[]) => {
-      return Promise.all(data.map((projectId: number) => fetchProject(projectId).then((res: any) => res.json())));
+      return Promise.all(data.map((projectId: number) => fetchProject(projectId)));
     })
     .catch(() => {
       return data.lastYear.map((projectId)=> data.projects.find(card=>card.id===projectId));
@@ -55,7 +55,7 @@ export function fetchProject(id: number | string) {
     })
     .catch(() => {
       return data.projects.find(project=>project.id.toString() === id.toString());
-  });
+    });
 }
 
 export function fetchUsersInProject(id: number | string) {
