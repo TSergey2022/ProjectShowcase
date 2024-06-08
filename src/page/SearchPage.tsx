@@ -29,7 +29,7 @@ function SearchPage() {
       {projectsData.map((project: any)=>{
         return (
           <Card onClick={()=>navigate(`/projects/${project.id}`)} key={project.id} bg="primary" text="white" className="cursor-pointer">
-            <Card.Header>{cropString(project.name, 30)}</Card.Header>
+            <Card.Header>{cropString(project.title, 30)}</Card.Header>
             <Card.Img src={project.thumbnail} ></Card.Img>
           </Card>
         );
@@ -43,7 +43,7 @@ function SearchPage() {
           <div onClick={()=>navigate(`/projects/${project.id}`)} key={project.id} className="border border-primary hover-bg-primary-25 cursor-pointer d-flex flex-row gap-3">
             <Image src={project.thumbnail} />
             <div>
-              <h3>{project.name}</h3>
+              <h3>{project.title}</h3>
               <div>Трек: {project.track_name}</div>
             </div>
           </div>

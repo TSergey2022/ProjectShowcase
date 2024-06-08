@@ -1,9 +1,15 @@
 import data from "./data.json";
 
-const API_URL = "https://127.0.0.1"
+const API_URL = "http://localhost:3000"
 
 export function fetchFavorite() {
   return fetch(`${API_URL}/favorite`)
+    .then((res) => {
+      return res.json();
+    })
+    .then((data: number[]) => {
+      return Promise.all(data.map((projectId: number) => fetchProject(projectId).then((res: any) => res.json())));
+    })
     .catch(() => {
       return data.star.map((projectId: number) => data.projects.find(card=>card.id===projectId));
   });
@@ -11,6 +17,12 @@ export function fetchFavorite() {
 
 export function fetchLastYear() {
   return fetch(`${API_URL}/lastYear`)
+    .then((res) => {
+      return res.json();
+    })
+    .then((data: number[]) => {
+      return Promise.all(data.map((projectId: number) => fetchProject(projectId).then((res: any) => res.json())));
+    })
     .catch(() => {
       return data.lastYear.map((projectId)=> data.projects.find(card=>card.id===projectId));
   });
@@ -18,6 +30,9 @@ export function fetchLastYear() {
 
 export function fetchTracks() {
   return fetch(`${API_URL}/tracks`)
+    .then((res) => {
+      return res.json();
+    })
     .catch(() => {
       return data.tracks;
   });
@@ -25,6 +40,9 @@ export function fetchTracks() {
 
 export function fetchProjects() {
   return fetch(`${API_URL}/projects`)
+    .then((res) => {
+      return res.json();
+    })
     .catch(() => {
       return data.projects;
   });
@@ -32,6 +50,9 @@ export function fetchProjects() {
 
 export function fetchProject(id: number | string) {
   return fetch(`${API_URL}/projects/${id}`)
+    .then((res) => {
+      return res.json();
+    })
     .catch(() => {
       return data.projects.find(project=>project.id.toString() === id.toString());
   });
@@ -39,6 +60,9 @@ export function fetchProject(id: number | string) {
 
 export function fetchUsersInProject(id: number | string) {
   return fetch(`${API_URL}/projects/${id}/users`)
+    .then((res) => {
+      return res.json();
+    })
     .catch(() => {
       return data.projects.find(project=>project.id.toString() === id.toString())?.team.map(user => {
         return {

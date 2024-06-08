@@ -14,9 +14,11 @@ function MainPage() {
   useEffect(() => {
     fetchFavorite().then((newDataFavorite) => {
       setDataFavorite(newDataFavorite);
+      console.log(newDataFavorite);
     });
     fetchLastYear().then((newDataLastYear) => {
       setDataLastYear(newDataLastYear);
+      console.log(newDataLastYear);
     })
   }, [])
 
@@ -33,7 +35,7 @@ function MainPage() {
               if (!project) return <></>;
               return (
                 <Card onClick={()=>navigate(`/projects/${project.id}`)} key={i} bg="primary" text="white" className="cursor-pointer">
-                  <Card.Header>{cropString(project.name, 30)}</Card.Header>
+                  <Card.Header>{cropString(project.title, 30)}</Card.Header>
                   <Card.Img src={project.thumbnail} ></Card.Img>
                 </Card>
               );
@@ -50,7 +52,7 @@ function MainPage() {
               if (!project) return <></>;
               return (
                 <Card onClick={()=>navigate(`/projects/${project.id}`)} key={j} bg="primary" text="white" className="cursor-pointer">
-                  <Card.Header>{cropString(project.name, 30)}</Card.Header>
+                  <Card.Header>{cropString(project.title, 30)}</Card.Header>
                   <Card.Img src={project.thumbnail} ></Card.Img>
                 </Card>
               );

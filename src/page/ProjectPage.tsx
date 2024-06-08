@@ -34,7 +34,7 @@ function ProjectPage() {
       alignSelf: "center",
     }} className="d-flex flex-column gap-3 py-3">
         <div className="border border-primary bg-primary-25 p-3 rounded">
-          <h1 className="text-center">{projectData.name}</h1>
+          <h1 className="text-center">{projectData.title}</h1>
         </div>
         <div className="border border-primary bg-primary-25 p-3 rounded">
           <h2 onClick={()=>navigate(`/track/${projectData.track}`)} className="cursor-pointer hover-bg-primary-50">Трек: {projectData.track_name}</h2>
