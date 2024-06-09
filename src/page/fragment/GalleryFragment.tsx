@@ -5,11 +5,11 @@ import Col from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
 import Modal from 'react-bootstrap/Modal';
 
-function GalleryFragment() {
+function GalleryFragment(props: {imgs: string[] | undefined}) {
   const [showModal, setShowModal] = useState(false);
   const [selectedImage, setSelectedImage] = useState('');
 
-  const images = [
+  const images = props.imgs ?? [
     'https://via.assets.so/img.jpg?w=300&h=225',
     'https://via.assets.so/img.jpg?w=300&h=225',
     'https://via.assets.so/img.jpg?w=300&h=225',
@@ -28,9 +28,9 @@ function GalleryFragment() {
   return (
     <Container>
       <h2 className="text-center">Галерея</h2>
-      <Row>
+      <div className="d-flex flex-row">
         {images.map((imageUrl, index) => (
-          <Col key={index} className="mb-4">
+          <div key={index} className="d-flex flex-row mb-4">
             <Image
               className="cursor-pointer"
               src={imageUrl}
@@ -39,16 +39,16 @@ function GalleryFragment() {
               fluid
               onClick={() => handleImageClick(imageUrl)}
             />
-          </Col>
+          </div>
         ))}
-      </Row>
+      </div>
 
       <Modal show={showModal} onHide={handleCloseModal} size="lg">
         <Modal.Header closeButton>
           <Modal.Title>Оригинальное изображение</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Image src={selectedImage} alt="Full Screen Image" fluid />
+          <Image className="w-100 h-100" src={selectedImage} alt="Full Screen Image" fluid />
         </Modal.Body>
       </Modal>
     </Container>

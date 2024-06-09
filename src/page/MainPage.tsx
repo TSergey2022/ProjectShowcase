@@ -18,7 +18,6 @@ function MainPage() {
     });
     fetchLastYear().then((newDataLastYear) => {
       setDataLastYear(newDataLastYear);
-      console.log(newDataLastYear);
     })
   }, [])
 
@@ -35,7 +34,7 @@ function MainPage() {
               if (!project) return <></>;
               return (
                 <Card onClick={()=>navigate(`/projects/${project.id}`)} key={i} bg="primary" text="white" className="cursor-pointer">
-                  <Card.Header>{cropString(project.title, 30)}</Card.Header>
+                  <Card.Header className="custom-card">{cropString(project.title, 60)}</Card.Header>
                   <Card.Img src={project.thumbnail} ></Card.Img>
                 </Card>
               );
@@ -44,6 +43,13 @@ function MainPage() {
         </div>
         <div className="border border-primary bg-primary-25 p-3 d-flex flex-column gap-3 rounded">
           <h1 className="text-center">О проектной деятельности</h1>
+          <div>
+            Проектная деятельность (ПД) — это дисциплина, направленная на получение практического опыта по специальности.
+            Соответственно, для каждой специальности предлагаются уникальные проекты.
+            Это могут быть как задачи, предложенные университетом, так и внешние: от людей и компаний, сотрудничающих с Политехом.
+            Задача этого предмета — дать возможность студентам решить какую-либо проблему, с которой они могут столкнуться после окончания университета.
+            Чаще всего это разработка какого-либо сайта, портала, мобильного приложения и т.п.
+          </div>
         </div>
         <div className="border border-primary bg-primary-25 p-3 d-flex flex-column gap-3 rounded">
           <h1 className="text-center">Лучшие проекты прошлого года</h1>
@@ -52,7 +58,7 @@ function MainPage() {
               if (!project) return <></>;
               return (
                 <Card onClick={()=>navigate(`/projects/${project.id}`)} key={j} bg="primary" text="white" className="cursor-pointer">
-                  <Card.Header>{cropString(project.title, 30)}</Card.Header>
+                  <Card.Header className="custom-card">{cropString(project.title, 60)}</Card.Header>
                   <Card.Img src={project.thumbnail} ></Card.Img>
                 </Card>
               );

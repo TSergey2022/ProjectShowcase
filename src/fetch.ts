@@ -1,6 +1,6 @@
 import data from "./data.json";
 
-const API_URL = "http://localhost:3000"
+const API_URL = "http://localhost:3002"
 
 export function fetchFavorite() {
   return fetch(`${API_URL}/favorite`)

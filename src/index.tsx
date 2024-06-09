@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MainPage, AuthPage, AccountPage, AllTracksPage, TrackPage, ProjectPage, SearchPage, Error404Page } from './page';
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./index.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

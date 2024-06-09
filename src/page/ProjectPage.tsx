@@ -44,7 +44,7 @@ function ProjectPage() {
           <div className="d-flex flex-row flex-wrap gap-3 justify-content-around">
             {usersData.map((user: any)=>{
               return (
-                <Row key={user.id} className="w-45 border border-primary p-3">
+                <Row key={user.id} className="flex-grow-1 border border-primary p-3">
                   <Col className="flex-grow-0"><Image className="border border-primary rounded-circle" src="https://via.assets.so/img.jpg?w=50&h=50" /></Col>
                   <Col>
                     <Row>{user.full_name}</Row>
@@ -66,7 +66,7 @@ function ProjectPage() {
           <div onClick={()=>window.open("https://example.com", '_blank')} className="d-flex flex-row p-3 gap-1 justify-content-center border border-primary cursor-pointer hover-bg-primary-25 flex-grow-1">Презентация</div>
         </div>
         <div className="border border-primary bg-primary-25 p-3 rounded">
-          <GalleryFragment />
+          <GalleryFragment imgs={[projectData.thumbnail, ...projectData.screenshots]} />
         </div>
         <div className="border border-primary bg-primary-25 p-3 rounded">
           <h2 className="text-center">Результаты</h2>

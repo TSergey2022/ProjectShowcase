@@ -29,7 +29,7 @@ function SearchPage() {
       {projectsData.map((project: any)=>{
         return (
           <Card onClick={()=>navigate(`/projects/${project.id}`)} key={project.id} bg="primary" text="white" className="cursor-pointer">
-            <Card.Header>{cropString(project.title, 30)}</Card.Header>
+            <Card.Header className="custom-card">{cropString(project.title, 60)}</Card.Header>
             <Card.Img src={project.thumbnail} ></Card.Img>
           </Card>
         );
@@ -57,13 +57,13 @@ function SearchPage() {
       maxWidth: "var(--bs-breakpoint-lg)",
       alignSelf: "center",
     }} className="d-flex flex-column gap-3 py-3">
+        <div className="border border-primary bg-primary-25 p-3 rounded">
+          <h2 className="text-center">Все проекты</h2>
+        </div>
         <div className="d-flex flex-row gap-3 align-items-center">
           <div>Формат вывода проектов:</div>
           <div onClick={()=>setView2(ViewEnum.Plate)} className="hover-bg-primary-25 cursor-pointer text-center border border-primary flex-grow-1 p-3">Плитки</div>
           <div onClick={()=>setView2(ViewEnum.List)} className="hover-bg-primary-25 cursor-pointer text-center border border-primary flex-grow-1 p-3">Список</div>
-        </div>
-        <div className="border border-primary bg-primary-25 p-3 rounded">
-          <h2 className="text-center">Все проекты</h2>
         </div>
         {{[ViewEnum.Plate]: makePlate, [ViewEnum.List]: makeList}[view]()}
       </div>
